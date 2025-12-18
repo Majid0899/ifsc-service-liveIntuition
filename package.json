@@ -1,0 +1,36 @@
+{
+  "name": "ifscapi",
+  "version": "1.0.0",
+  "description": "an api which fetches the bank details",
+  "type":"module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"node index.js",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Majid0899/ifsc-service-liveIntuition.git"
+  },
+  "keywords": [
+    "node",
+    "api",
+    "ifsc",
+    "bank",
+    "details"
+  ],
+  "author": "Majid Khan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Majid0899/ifsc-service-liveIntuition/issues"
+  },
+  "homepage": "https://github.com/Majid0899/ifsc-service-liveIntuition#readme",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.0.2"
+  }
+}
