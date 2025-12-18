@@ -1,5 +1,8 @@
 import { generateToken } from "../middleware/authMiddleware.js";
 import User from "../model/User.js";
+import bcrypt from 'bcrypt'
+
+
 
 
 const handleRegisterUser=async (req,res)=>{
@@ -17,8 +20,13 @@ const handleRegisterUser=async (req,res)=>{
             return res.status(400).json({error:"User already exist "})
         }
 
+        // hashed the password
+
+        const salt=await bcrypt.genSalt(10)
+        const hashedPassword=await bcrypt.hash(password,salt);
+
         // create a user
-        const user=new User({username,email,password})
+        const user=new User({username,email,password:hashedPassword})
 
         await user.save()
 
