@@ -50,4 +50,45 @@ const handleRegisterUser=async (req,res)=>{
     }
 }
 
-export {handleRegisterUser}
+const hanldeLoginUser=async(req,res)=>{
+    try {
+        const {email,password}=req.body
+        
+
+        if(!email || !password){
+            return res.status(400).json({error:"Please fill all the feilds   dd"})
+        }
+
+        // Retreive the user from database and compare password
+
+        const user=await User.findOne({email:email})
+
+        if(!user){
+            return res.status(404).json({"error":"No user is present Please Register User"})
+        }
+
+        const isMatch=await bcrypt.compare(password,user.password)
+
+        if(!isMatch){
+            return res.status(400).json({error:"Wrong password please Enter correct password"})
+        }
+
+        const payload={
+            id:user._id,
+            username:user.username
+        }
+
+        const token=generateToken(payload)
+
+
+        res.status(200).json({user,token,message:"Logged In Successfully"})
+
+
+
+    } catch (error) {
+        res.status(500).json({error:`Internal Server Error ${error.message}`})
+    }
+
+}
+
+export {handleRegisterUser,hanldeLoginUser}
