@@ -1,7 +1,11 @@
 import express from 'express'
 import dotenv from 'dotenv'
 
+import { createConnection } from './config/db.js'
+
 dotenv.config()
+
+createConnection()
 
 const app=express()
 
