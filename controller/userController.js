@@ -56,7 +56,7 @@ const hanldeLoginUser=async(req,res)=>{
         
 
         if(!email || !password){
-            return res.status(400).json({error:"Please fill all the feilds   dd"})
+            return res.status(400).json({error:"Please fill all the feilds"})
         }
 
         // Retreive the user from database and compare password

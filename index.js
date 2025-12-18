@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 
 import userRouter from './router/userRouter.js'
+import ifscRouter from './router/ifscRouter.js'
 
 import { createConnection } from './config/db.js'
 
@@ -19,6 +20,7 @@ app.get("/",(req,res)=>{
 })
 
 app.use("/user",userRouter)
+app.use("/api",ifscRouter)
 
 app.listen(process.env.PORT,()=>{
     console.log(`SERVER IS RUNNING ON http://localhost:${process.env.PORT}`)
